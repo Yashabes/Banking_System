@@ -50,7 +50,7 @@ public class FraudDetectionService {
         FraudCheckResult result = performFraudChecks(accountNumber,amount,senderBalance);
 
         if(result.isFraud()){
-            log.info("Suspicious activity detected-account: {}"
+            log.info("Suspicious activity detected-account: {}"+
             "reason:{} - requesting OTP verification",accountNumber,result.getReason());
             Map<String,Object> verificationEvent = new HashMap<>();
             verificationEvent.put("transactionId",transactionId);
