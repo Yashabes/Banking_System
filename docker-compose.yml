@@ -9,13 +9,7 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - banking-network
-
-  mysql:
-    image: mysql:8.0
-    container_name: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
+      - banking-network6 SQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:
