@@ -96,7 +96,7 @@ public class PaymentService {
             Map<String,Object> paymentData=extractPaymentData(payload);
             String orderId=(String)paymentData.get("order_id");
             String paymentId=(String)paymentData.get("id");
-            Payment payment=paymentRepository.findByRazorpayId(orderId)
+            Payment payment=paymentRepository.findByRazorpayOrderId(orderId)
                     .orElseThrow(()->new RuntimeException("Payment not found for order:"+orderId));
             payment.setRazorpayPaymentId(paymentId);
             payment.setStatus(PaymentStatus.COMPLETED);
@@ -118,7 +118,7 @@ public class PaymentService {
         try{
             Map<String,Object> paymentData=extractPaymentData(payload);
             String orderId=(String)paymentData.get("order_id");
-            Payment payment=paymentRepository.findByRazorpayId(orderId)
+            Payment payment=paymentRepository.findByRazorpayOrderId(orderId)
                     .orElseThrow(()->new RuntimeException("Payment not found for order:"+orderId));
             payment.setStatus(PaymentStatus.FAILED);
             payment.setFailureReason("Payment failed via Razorpay");
